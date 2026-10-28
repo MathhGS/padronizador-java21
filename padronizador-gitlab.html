@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Padronizador GitLab</title>
+    <link rel="icon" type="image/png" href="data:image/png;base64,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">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        .subtitulo {
+            text-align: center;
+            color: #777;
+            font-size: 13px;
+            margin-bottom: 25px;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: #fc6d26;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 3px 8px;
+            border-radius: 4px;
+            margin-left: 6px;
+            vertical-align: middle;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+            font-family: Arial, sans-serif;
+        }
+
+        .script-container {
+            margin-bottom: 15px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .script-container input {
+            flex: 1;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .btn-remove {
+            background-color: #dc3545;
+            color: white;
+            width: 30px;
+            height: 38px;
+            padding: 0;
+            font-size: 16px;
+            line-height: 1;
+            flex-shrink: 0;
+        }
+
+        .btn-remove:hover {
+            background-color: #c82333;
+        }
+
+        .repo-group {
+            margin-bottom: 15px;
+            padding: 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            background-color: #fafafa;
+        }
+
+        .repo-header {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .repo-header .prefixo-select {
+            flex: 0 0 170px;
+        }
+
+        .repo-header .repositorio-select {
+            flex: 1;
+        }
+
+        .preview {
+            margin-top: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            color: #555;
+            word-break: break-word;
+        }
+
+        .contador {
+            font-size: 12px;
+            color: #28a745;
+            margin-top: 4px;
+            text-align: right;
+        }
+
+        .contador.excedido {
+            color: #dc3545;
+            font-weight: bold;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: #545b62;
+        }
+
+        .btn-success {
+            background-color: #28a745;
+            color: white;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .btn-success:hover {
+            background-color: #218838;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+            cursor: pointer;
+        }
+
+        .error {
+            border-color: #dc3545 !important;
+        }
+
+        .error-message {
+            color: #dc3545;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            max-width: 700px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+
+        .modal-header {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .modal-header h2 {
+            color: #333;
+            margin: 0;
+        }
+
+        .modal-body {
+            margin-bottom: 20px;
+        }
+
+        .modal-section {
+            margin-bottom: 25px;
+        }
+
+        .modal-section h3 {
+            color: #555;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .repo-commit {
+            margin-bottom: 15px;
+        }
+
+        .repo-commit h4 {
+            color: #fc6d26;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .message-box {
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .modal-footer {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+            padding-top: 15px;
+            border-top: 2px solid #ddd;
+        }
+
+        .btn-copy {
+            background-color: #17a2b8;
+            color: white;
+            margin-top: 10px;
+        }
+
+        .btn-copy:hover {
+            background-color: #138496;
+        }
+
+        .btn-close {
+            background-color: #6c757d;
+            color: white;
+        }
+
+        .btn-close:hover {
+            background-color: #545b62;
+        }
+
+        .relatorios-section {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+        }
+
+        .relatorios-section.show {
+            display: block;
+        }
+
+        .relatorio-item {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .relatorio-item input[type="text"] {
+            flex: 1;
+        }
+
+        .relatorio-item .checkbox-group {
+            flex-shrink: 0;
+            white-space: nowrap;
+        }
+
+        .btn-add-relatorio {
+            background-color: #17a2b8;
+            color: white;
+            padding: 8px 16px;
+            margin-top: 10px;
+        }
+
+        .btn-add-relatorio:hover {
+            background-color: #138496;
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 10px; }
+            .container { padding: 16px; }
+            .repo-header { flex-wrap: wrap; }
+            .repo-header .prefixo-select { flex: 1 1 100%; }
+            .relatorio-item { flex-wrap: wrap; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Padronizador <span class="badge">GitLab · Java 21</span></h1>
+        <p class="subtitulo">Monta as mensagens de commit e a resposta de protocolo no padrão da empresa.</p>
+
+        <button class="btn-danger" onclick="limparTudo()">Limpar Tudo</button>
+
+        <div class="form-group">
+            <label for="processo">Processo *</label>
+            <input type="text" id="processo" placeholder="000000/0000" maxlength="11">
+            <div id="processoError" class="error-message"></div>
+        </div>
+
+        <div class="form-group">
+            <label>Script</label>
+            <div id="scriptsContainer"></div>
+            <button class="btn-secondary" style="margin-top: 10px;" onclick="adicionarScript(true)">Adicionar novo script</button>
+        </div>
+
+        <div class="form-group">
+            <div class="checkbox-group">
+                <input type="checkbox" id="retrabalho">
+                <label for="retrabalho" style="margin-bottom: 0;">Retrabalho</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Tipo, Repositório e Descrição *</label>
+            <div id="repositoriosContainer"></div>
+            <div id="repositoriosError" class="error-message"></div>
+            <button class="btn-secondary" style="margin-top: 10px;" onclick="adicionarRepositorio(true)">Adicionar repositório</button>
+        </div>
+
+        <div class="form-group">
+            <label for="detalhamento">Detalhamento da Alteração</label>
+            <textarea id="detalhamento" placeholder="Descreva em detalhes a alteração realizada..."></textarea>
+        </div>
+
+        <button class="btn-success" onclick="finalizar()">Finalizar</button>
+    </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Mensagens Geradas</h2>
+            </div>
+            <div class="modal-body">
+                <div class="modal-section">
+                    <h3>Mensagens de Commit</h3>
+                    <div id="mensagensCommitContainer"></div>
+                </div>
+                <div class="modal-section">
+                    <h3>Resposta de Protocolo</h3>
+                    <div class="message-box" id="mensagemProtocolo"></div>
+                    <button class="btn-copy" onclick="copiarTexto(document.getElementById('mensagemProtocolo'), this)">Copiar</button>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-close" onclick="fecharModal()">Fechar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const FLAG_JAVA = '[JAVA 21]';
+        const ESCOPO = 'cpe';
+        const LIMITE_COMMIT = 160;
+
+        const PREFIXOS = [
+            { valor: 'feat', descricao: 'nova funcionalidade' },
+            { valor: 'fix', descricao: 'correção' },
+            { valor: 'hotfix', descricao: 'correção urgente de produção' },
+            { valor: 'chore', descricao: 'manutenção' },
+            { valor: 'docs', descricao: 'documentação' },
+            { valor: 'refactor', descricao: 'refatoração sem mudança funcional' },
+            { valor: 'test', descricao: 'testes' },
+            { valor: 'build', descricao: 'build/dependências' },
+            { valor: 'ci', descricao: 'pipeline' },
+            { valor: 'revert', descricao: 'reversão' }
+        ];
+
+        const REPOSITORIOS = [
+            'basecontabil',
+            'contacorrente',
+            'cpebase',
+            'cpedicionario',
+            'cpeintegracaorhf',
+            'cperelatorios',
+            'execucao',
+            'lrf',
+            'orcamento',
+            'planejamento',
+            'prestacaocontas',
+            'reinf',
+            'relatorios',
+            'sicom',
+            'versaobanco',
+            'gpi'
+        ];
+
+        const REPO_RELATORIOS = 'relatorios';
+
+        const processoInput = document.getElementById('processo');
+
+        processoInput.addEventListener('input', function(e) {
+            let valor = e.target.value.replace(/\D/g, '');
+
+            if (valor.length > 10) {
+                valor = valor.substring(0, 10);
+            }
+
+            if (valor.length > 6) {
+                e.target.value = valor.substring(0, 6) + '/' + valor.substring(6, 10);
+            } else {
+                e.target.value = valor;
+            }
+
+            document.getElementById('processoError').textContent = '';
+            processoInput.classList.remove('error');
+            atualizarPreviews();
+        });
+
+        document.getElementById('scriptsContainer').addEventListener('input', atualizarPreviews);
+
+        function opcoesPrefixo() {
+            return '<option value="">Tipo...</option>' + PREFIXOS
+                .map(p => `<option value="${p.valor}" title="${p.descricao}">${p.valor} - ${p.descricao}</option>`)
+                .join('');
+        }
+
+        function opcoesRepositorio() {
+            return '<option value="">Selecione o repositório...</option>' + REPOSITORIOS
+                .map(r => `<option value="${r}">${r}</option>`)
+                .join('');
+        }
+
+        function htmlRelatorio(removivel) {
+            return `
+                <input type="text" class="relatorio-nome" placeholder="Nome do relatório">
+                <label class="checkbox-group" style="margin-bottom: 0; font-weight: normal;">
+                    <input type="checkbox" class="relatorio-prod">
+                    Atualizado em produção
+                </label>
+                ${removivel ? '<button class="btn-remove" type="button" onclick="this.closest(\'.relatorio-item\').remove()" title="Remover relatório">×</button>' : ''}
+            `;
+        }
+
+        function adicionarScript(removivel) {
+            const novoScript = document.createElement('div');
+            novoScript.className = 'script-container';
+            novoScript.innerHTML = `
+                <input type="text" class="script-input" placeholder="Digite o script">
+                ${removivel ? '<button class="btn-remove" onclick="removerScript(this)" title="Remover script">×</button>' : ''}
+            `;
+            document.getElementById('scriptsContainer').appendChild(novoScript);
+        }
+
+        function removerScript(botao) {
+            botao.parentElement.remove();
+            atualizarPreviews();
+        }
+
+        function adicionarRepositorio(removivel) {
+            const novoRepo = document.createElement('div');
+            novoRepo.className = 'repo-group';
+            novoRepo.innerHTML = `
+                <div class="repo-header">
+                    <select class="prefixo-select">${opcoesPrefixo()}</select>
+                    <select class="repositorio-select" onchange="toggleRelatorios(this)">${opcoesRepositorio()}</select>
+                    ${removivel ? '<button class="btn-remove" onclick="this.closest(\'.repo-group\').remove()" title="Remover repositório">×</button>' : ''}
+                </div>
+                <input type="text" class="resumo-input" placeholder="Descrição da alteração">
+                <div class="preview"></div>
+                <div class="contador"></div>
+                <div class="relatorios-section">
+                    <div class="relatorios-container">
+                        <div class="relatorio-item">${htmlRelatorio(false)}</div>
+                    </div>
+                    <button class="btn-add-relatorio" type="button" onclick="adicionarRelatorio(this)">Adicionar relatório</button>
+                </div>
+            `;
+            novoRepo.addEventListener('input', () => atualizarPreview(novoRepo));
+            novoRepo.addEventListener('change', () => atualizarPreview(novoRepo));
+            document.getElementById('repositoriosContainer').appendChild(novoRepo);
+            atualizarPreview(novoRepo);
+        }
+
+        function toggleRelatorios(selectElement) {
+            const relatoriosSection = selectElement.closest('.repo-group').querySelector('.relatorios-section');
+            relatoriosSection.classList.toggle('show', selectElement.value === REPO_RELATORIOS);
+        }
+
+        function adicionarRelatorio(botao) {
+            const novoRelatorio = document.createElement('div');
+            novoRelatorio.className = 'relatorio-item';
+            novoRelatorio.innerHTML = htmlRelatorio(true);
+            botao.previousElementSibling.appendChild(novoRelatorio);
+        }
+
+        function obterScripts() {
+            return Array.from(document.querySelectorAll('.script-input'))
+                .map(input => input.value.trim())
+                .filter(script => script !== '');
+        }
+
+        // prefixo(cpe): {processo} [SCRIPT] - {descrição}
+        function montarCommit(prefixo, processo, temScript, descricao) {
+            let msg = `${prefixo || 'prefixo'}(${ESCOPO}): ${processo || '000000/0000'}`;
+            if (temScript) msg += ' [SCRIPT]';
+            msg += ' - ' + (descricao || '{descrição}');
+            return msg;
+        }
+
+        function atualizarPreview(group) {
+            const prefixo = group.querySelector('.prefixo-select').value;
+            const descricao = group.querySelector('.resumo-input').value.trim();
+            const msg = montarCommit(prefixo, processoInput.value, obterScripts().length > 0, descricao);
+
+            group.querySelector('.preview').textContent = msg;
+            const contador = group.querySelector('.contador');
+            contador.textContent = `${msg.length}/${LIMITE_COMMIT} caracteres`;
+            contador.classList.toggle('excedido', msg.length > LIMITE_COMMIT);
+        }
+
+        function atualizarPreviews() {
+            document.querySelectorAll('.repo-group').forEach(atualizarPreview);
+        }
+
+        function limparTudo() {
+            processoInput.value = '';
+            processoInput.classList.remove('error');
+            document.getElementById('processoError').textContent = '';
+            document.getElementById('repositoriosError').textContent = '';
+            document.getElementById('scriptsContainer').innerHTML = '';
+            document.getElementById('repositoriosContainer').innerHTML = '';
+            document.getElementById('retrabalho').checked = false;
+            document.getElementById('detalhamento').value = '';
+            adicionarScript(false);
+            adicionarRepositorio(false);
+        }
+
+        function validarProcesso() {
+            const processo = processoInput.value;
+            const processoError = document.getElementById('processoError');
+
+            if (!processo) {
+                processoError.textContent = 'O campo Processo é obrigatório';
+            } else if (!/^\d{6}\/\d{4}$/.test(processo)) {
+                processoError.textContent = 'Formato inválido. Use o formato 000000/0000';
+            } else {
+                processoError.textContent = '';
+                processoInput.classList.remove('error');
+                return true;
+            }
+
+            processoInput.classList.add('error');
+            return false;
+        }
+
+        function validarRepositorios(processo, temScript) {
+            const erros = [];
+            const repositorios = [];
+
+            document.querySelectorAll('.repo-group').forEach((group, index) => {
+                const prefixoSelect = group.querySelector('.prefixo-select');
+                const repoSelect = group.querySelector('.repositorio-select');
+                const resumoInput = group.querySelector('.resumo-input');
+                const n = index + 1;
+
+                [prefixoSelect, repoSelect, resumoInput].forEach(el => el.classList.remove('error'));
+
+                if (!prefixoSelect.value) { prefixoSelect.classList.add('error'); erros.push(`Repositório ${n}: selecione o tipo do commit.`); }
+                if (!repoSelect.value) { repoSelect.classList.add('error'); erros.push(`Repositório ${n}: selecione o repositório.`); }
+                if (!resumoInput.value.trim()) { resumoInput.classList.add('error'); erros.push(`Repositório ${n}: informe a descrição.`); }
+
+                const mensagem = montarCommit(prefixoSelect.value, processo, temScript, resumoInput.value.trim());
+                if (mensagem.length > LIMITE_COMMIT) {
+                    resumoInput.classList.add('error');
+                    erros.push(`Repositório ${n}: commit com ${mensagem.length} caracteres (máximo ${LIMITE_COMMIT}).`);
+                }
+
+                let relatorios = [];
+                if (repoSelect.value === REPO_RELATORIOS) {
+                    relatorios = Array.from(group.querySelectorAll('.relatorio-item'))
+                        .map(item => ({
+                            nome: item.querySelector('.relatorio-nome').value.trim(),
+                            prod: item.querySelector('.relatorio-prod').checked
+                        }))
+                        .filter(rel => rel.nome !== '');
+                }
+
+                repositorios.push({ repositorio: repoSelect.value, mensagem, relatorios });
+            });
+
+            document.getElementById('repositoriosError').innerHTML = erros.map(e => e.replace(/</g, '&lt;')).join('<br>');
+            return erros.length === 0 ? repositorios : null;
+        }
+
+        function finalizar() {
+            const processoOk = validarProcesso();
+            const processo = processoInput.value;
+            const scripts = obterScripts();
+            const repositorios = validarRepositorios(processo, scripts.length > 0);
+
+            if (!processoOk || !repositorios) {
+                alert('Corrija os campos destacados antes de finalizar.');
+                return;
+            }
+
+            const retrabalho = document.getElementById('retrabalho').checked;
+            const detalhamento = document.getElementById('detalhamento').value.trim();
+
+            const container = document.getElementById('mensagensCommitContainer');
+            container.innerHTML = '';
+
+            repositorios.forEach(repo => {
+                const div = document.createElement('div');
+                div.className = 'repo-commit';
+                div.innerHTML = `
+                    <h4></h4>
+                    <div class="message-box"></div>
+                    <button class="btn-copy" onclick="copiarTexto(this.previousElementSibling, this)">Copiar</button>
+                `;
+                div.querySelector('h4').textContent = 'Repositório: ' + repo.repositorio;
+                div.querySelector('.message-box').textContent = repo.mensagem;
+                container.appendChild(div);
+            });
+
+            // Resposta de protocolo: a flag de versão do Java vem sempre na primeira linha
+            const partes = [FLAG_JAVA];
+
+            if (retrabalho) {
+                partes.push('[RETRABALHO]');
+            }
+
+            partes.push('Commits:\n' + repositorios.map(r => `${r.repositorio}: ${r.mensagem}`).join('\n'));
+
+            if (scripts.length > 0) {
+                partes.push('Scripts:\n' + scripts.join('\n'));
+            }
+
+            const todosRelatorios = repositorios.flatMap(r => r.relatorios);
+            if (todosRelatorios.length > 0) {
+                partes.push('Relatórios:\n' + todosRelatorios
+                    .map(rel => rel.nome + (rel.prod ? ' (Atualizado em produção)' : ''))
+                    .join('\n'));
+            }
+
+            if (detalhamento) {
+                partes.push('Detalhamento da Alteração:\n' + detalhamento);
+            }
+
+            document.getElementById('mensagemProtocolo').textContent = partes.join('\n\n');
+            document.getElementById('modal').classList.add('show');
+        }
+
+        function fecharModal() {
+            document.getElementById('modal').classList.remove('show');
+        }
+
+        function copiarTexto(elemento, botao) {
+            navigator.clipboard.writeText(elemento.textContent).then(() => {
+                const textoOriginal = botao.textContent;
+                const corOriginal = botao.style.backgroundColor;
+
+                botao.textContent = '✓ Copiado!';
+                botao.style.backgroundColor = '#28a745';
+                botao.disabled = true;
+
+                setTimeout(() => {
+                    botao.textContent = textoOriginal;
+                    botao.style.backgroundColor = corOriginal;
+                    botao.disabled = false;
+                }, 2000);
+            }).catch(err => {
+                console.error('Erro ao copiar texto:', err);
+                alert('Erro ao copiar texto. Tente novamente.');
+            });
+        }
+
+        window.onclick = function(event) {
+            if (event.target === document.getElementById('modal')) {
+                fecharModal();
+            }
+        };
+
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') fecharModal();
+        });
+
+        limparTudo();
+    </script>
+</body>
+</html>
